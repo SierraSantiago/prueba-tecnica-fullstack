@@ -1,30 +1,22 @@
-import { SignOutButton } from "@/components/auth/SignOutButton";
 import { useRequireAuth } from "@/hooks/useRequireAuth";
+import { useUserRole } from "@/hooks/useUserRole";
 import { Sidebar } from "@/components/ui/Sidebar";
-import { authClient } from "../lib/auth/client";
-import { useState, useEffect } from "react";
+import { SignOutButton } from "@/components/auth/SignOutButton";
 import { Button } from "@/components/ui/button";
 
 const Home = () => {
-  const [role, setRole] = useState<"ADMIN" | "USER">("USER");
-
   useRequireAuth(); 
-
-  useEffect(() => {
-    authClient.getSession().then((session) => {
-      if (session.data?.user) {
-        
-        // Por ahora, asignamos ADMIN siempre como indica la prueba
-        setRole("ADMIN");
-      }
-    });
-  }, []);
+  const { role, loading } = useUserRole();
 
   const sections = [
     { name: "Ingresos y Egresos", path: "/movements", roles: ["ADMIN", "USER"] },
     { name: "Usuarios", path: "/users", roles: ["ADMIN"] },
     { name: "Reportes", path: "/reports", roles: ["ADMIN"] },
   ];
+
+  if (loading) {
+    return <div className="text-white">Cargando...</div>;
+  }
 
   return (
     <div className="flex h-screen bg-gray-600 text-white">

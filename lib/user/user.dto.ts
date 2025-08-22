@@ -1,3 +1,4 @@
+//dto para mostrar usuario
 export interface UserDTO {
   id: string;
   name: string;
@@ -5,6 +6,7 @@ export interface UserDTO {
   role: "ADMIN" | "USER";
 }
 
+//dto para actualizar usuario
 export interface UpdateUserDTO {
   name?: string;
   role?: "ADMIN" | "USER";

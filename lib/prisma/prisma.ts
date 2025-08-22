@@ -1,14 +1,18 @@
 import { PrismaClient } from "@prisma/client";
 
 declare global {
-  // Evita múltiples instancias en hot reload (dev)
+  // Esto evita que TypeScript lo redeclare
+  // y nos asegura que se mantenga la instancia en desarrollo
   var prisma: PrismaClient | undefined;
 }
 
 export const prisma =
-  global.prisma ??
+  global.prisma ||
   new PrismaClient({
-    log: ["query", "error"], 
+    log: ["query", "error", "warn"],
   });
 
-if (process.env.NODE_ENV !== "production") global.prisma = prisma;
+// En desarrollo guardamos la instancia en global
+if (process.env.NODE_ENV !== "production") {
+  global.prisma = prisma;
+}
