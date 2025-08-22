@@ -1,4 +1,5 @@
 import swaggerJSDoc from "swagger-jsdoc";
+import { swaggerSchemas } from "./swaggerSchemas";
 
 const options: swaggerJSDoc.Options = {
   definition: {
@@ -8,27 +9,14 @@ const options: swaggerJSDoc.Options = {
       version: "1.0.0",
       description: "Documentación generada con Swagger para el backend",
     },
-    
     components: {
-      schemas: {
-        CreateMovementDto: {
-          type: "object",
-          properties: {
-            concept: { type: "string", example: "Compra supermercado" },
-            amount: { type: "number", example: 250.75 },
-            date: {
-              type: "string",
-              format: "date-time",
-              example: "2025-08-22T00:00:00.000Z",
-            },
-            userId: { type: "string", example: "user_123" },
-          },
-          required: ["concept", "amount", "date", "userId"],
-        },
-      },
+      schemas: swaggerSchemas,
     },
   },
-  apis: [ "./lib/user/user.controller.ts", "./lib/movements/movement.controller.ts",],
+  apis: [
+    "./lib/user/user.controller.ts",
+    "./lib/movements/movement.controller.ts",
+  ],
 };
 
 export const swaggerSpec = swaggerJSDoc(options);
