@@ -11,7 +11,7 @@ const Home = () => {
   const sections = [
     { name: "Ingresos y Egresos", path: "/movements/movements", roles: ["ADMIN", "USER"] },
     { name: "Usuarios", path: "/users/users", roles: ["ADMIN"] },
-    { name: "Reportes", path: "/reports", roles: ["ADMIN"] },
+    { name: "Reportes", path: "/reports/reports", roles: ["ADMIN"] },
   ];
 
   if (loading) {

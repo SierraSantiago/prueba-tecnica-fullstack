@@ -79,12 +79,12 @@ const EditUserPage = () => {
   return (
     <div className="flex h-screen bg-gray-600 text-white">
       <Sidebar role={role} />
-      <main className="flex-1 p-8">
+      <main className="flex-1 p-8 ">
         <h1 className="text-2xl font-bold mb-6">Editar Usuario</h1>
 
         <form
           onSubmit={handleSubmit}
-          className="flex flex-col gap-4 max-w-md bg-gray-800 p-6 rounded-lg shadow-md"
+          className="flex flex-col gap-4 max-w-md bg-gray-800 p-6 rounded-lg shadow-md "
         >
           <div>
             <label className="block mb-2">Nombre</label>
