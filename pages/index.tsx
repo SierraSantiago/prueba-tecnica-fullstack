@@ -9,7 +9,7 @@ const Home = () => {
   const { role, loading } = useUserRole();
 
   const sections = [
-    { name: "Ingresos y Egresos", path: "/movements", roles: ["ADMIN", "USER"] },
+    { name: "Ingresos y Egresos", path: "/movements/movements", roles: ["ADMIN", "USER"] },
     { name: "Usuarios", path: "/users", roles: ["ADMIN"] },
     { name: "Reportes", path: "/reports", roles: ["ADMIN"] },
   ];
