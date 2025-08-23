@@ -38,7 +38,6 @@ cd prueba-tecnica-fullstack-main
 ```bash
 npm install
 ```
->>>>>>> b886f1a6ad27b5063e574c771d78ddd943a418ed
 
 3. **Configurar variables de entorno**
 Crear un archivo .env en la raíz del proyecto con el siguiente contenido:
