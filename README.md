@@ -8,45 +8,49 @@ Inicio de sesión unicamente con Github.
 
 **Tecnologías usadas:**
 
-- Next.js (Pages Router) + TypeScript  
-- Tailwind CSS + Shadcn/UI  
-- Prisma con PostgreSQL (supabase) 
-- Recharts para gráficos  
-- Autenticación y autorización protegida  
-- Documentación de API con Swagger  
-- Tests unitarios con Jest + Supertest  
+- Next.js (Pages Router) + TypeScript
+- Tailwind CSS + Shadcn/UI
+- Prisma con PostgreSQL (supabase)
+- Recharts para gráficos
+- Autenticación y autorización protegida
+- Documentación de API con Swagger
+- Tests unitarios con Jest + Supertest
 
 ---
 
 ## Requisitos
 
-- Node.js 
-- npm 
-- PostgreSQL (local o remoto)  
-- Vercel account para despliegue  
+- Node.js
+- npm
+- PostgreSQL (local o remoto)
+- Vercel account para despliegue
 
 ---
 
 ## Instalación local
 
-1. **Clonar el repositorio**  
+1. **Clonar el repositorio**
+
 ```bash
 git clone <URL_DEL_REPOSITORIO>
 cd prueba-tecnica-fullstack-main
 ```
+
 2. **Installar dependecnias**
+
 ```bash
 npm install
 ```
 
 3. **Configurar variables de entorno**
-Crear un archivo .env en la raíz del proyecto con el siguiente contenido:
+   Crear un archivo .env en la raíz del proyecto con el siguiente contenido:
+
 ```bash
-#URL de la base de datos 
+#URL de la base de datos
 DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE"
 DIRECT_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE"  #Incluir esta si utilizas supabase
 
-# Better Auth 
+# Better Auth
 NEXT_PUBLIC_BETTER_AUTH_URL="http://localhost:PORT"
 
 # GitHub OAuth
@@ -58,31 +62,37 @@ NODE_ENV=development
 ```
 
 4. **Migrar la base de datos con Prisma**
+
 ```bash
 npx prisma migrate dev
 ```
 
 5. **Ejecutar el proyecto en modo desarrollo**
+
 ```bash
 npm run dev
 ```
+
 El proyecto estará disponible en http://localhost:3000
 
 6. **Ejecutar tests unitarios**
-Para ejecutar los Test 
+   Para ejecutar los Test
+
 ```bash
 npx jest
 ```
 
-
 ## Documentación Swagger
+
 La documentación de la API está disponible en:
+
 ```bash
 /api/docs
 ```
+
 Incluye todos los endpoints de usuarios y movimientos con sus parámetros, ejemplos y respuestas.
 
-##Estructura 
+##Estructura
 
 ```bash
 src/
@@ -108,6 +118,7 @@ src/
 
 
 ```
-## Autor
-Santiago Sierra Ramirez
 
+## Autor
+
+Santiago Sierra Ramirez
