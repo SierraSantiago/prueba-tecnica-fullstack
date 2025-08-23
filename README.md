@@ -47,11 +47,12 @@ npm install
 
 ```bash
 #URL de la base de datos
-DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE"
+DATABASE_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE?pgbouncer=true&connection_limit=1&prepared_statements=false"
 DIRECT_URL="postgresql://USER:PASSWORD@HOST:PORT/DATABASE"  #Incluir esta si utilizas supabase
 
 # Better Auth
 NEXT_PUBLIC_BETTER_AUTH_URL="http://localhost:PORT"
+BETTER_AUTH_SECRET="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
 
 # GitHub OAuth
 GITHUB_CLIENT_ID=your_github_client_id
@@ -118,6 +119,56 @@ src/
 
 
 ```
+
+## Despliegue en Vercel
+
+1. **Conectar el repositorio**
+- Ve a Vercel
+
+- Importa tu repositorio de GitHub
+
+2. **Configurar variables de entorno**
+   Importante: Crear la variable NEXT_PUBLIC_BETTER_AUTH_URL, despues de desplegar cambiar el valor.
+
+```bash
+# Base de datos Supabase
+DATABASE_URL="postgresql://postgres.USER:PASSWORD@aws-1-us-east-2.pooler.supabase.com:6543/postgres?pgbouncer=true&connection_limit=1&prepared_statements=false"
+DIRECT_URL="postgresql://postgres.USER:PASSWORD@aws-1-us-east-2.pooler.supabase.com:5432/postgres"
+
+# Better Auth
+NEXT_PUBLIC_BETTER_AUTH_URL="https://TU_DOMINIO.vercel.app"             
+BETTER_AUTH_SECRET="xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
+
+# GitHub OAuth
+GITHUB_CLIENT_ID="tu_client_id"
+GITHUB_CLIENT_SECRET="tu_client_secret"
+
+# Entorno
+NODE_ENV="production"
+
+```
+4. **Deploy**
+ 
+-Darle a deploy 
+
+Cuando termine, la app estará disponible en tu dominio:
+https://TU_DOMINIO.vercel.app
+
+5. **Configurar OAuth en GitHub y variable de entorno**
+
+Ahora 
+- ya conoces tu url de dominio cambiar la variable del entorno en vercel por: https://TU_DOMINIO.vercel.app
+
+- Ve a GitHub Developer Settings → OAuth Apps
+En tu aplicación OAuth:
+
+Homepage URL → https://TU_DOMINIO.vercel.app
+
+Authorization callback URL → https://TU_DOMINIO.vercel.app/api/auth/callback/github
+
+Por ultimo
+
+- Copia el Client ID, Client Secret y cambia las variables de entorno en Vercel.
 
 ## Autor
 
