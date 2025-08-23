@@ -16,7 +16,7 @@ export const SignOutButton = () => {
   };
 
   return (
-    <Button className = 'text-black'variant="outline" onClick={handleSignOut}>
+    <Button className = 'text-black hover:bg-slate-400'variant="outline" onClick={handleSignOut}>
       Cerrar sesión
     </Button>
   );

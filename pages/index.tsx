@@ -5,7 +5,7 @@ import { SignOutButton } from "@/components/auth/SignOutButton";
 import { Button } from "@/components/ui/button";
 
 const Home = () => {
-  useRequireAuth(); 
+  useRequireAuth();
   const { role, loading } = useUserRole();
 
   const sections = [
@@ -27,15 +27,17 @@ const Home = () => {
           <SignOutButton />
         </div>
 
-        <div className="flex flex-col items-center gap-4 mt-8">
-          <h1 className="text-2xl font-bold">Panel de Navegación</h1>
-          <div className="flex flex-col gap-4 w-64 mt-4">
+        <div className="flex flex-col items-center gap-6 mt-8">
+          <h1 className="text-2xl font-bold mb-44">Panel de Navegación</h1>
+
+          <div className="flex flex-row gap-4">
             {sections
               .filter((s) => s.roles.includes(role))
               .map((section) => (
                 <Button
                   key={section.name}
-                  className="w-full text-white border-white hover:bg-gray-700"
+                  size="lg"
+                  className="px-20 py-24 flex  ml-24  text-justify text-white border-white hover:bg-gray-700"
                   onClick={() => window.location.assign(section.path)}
                 >
                   {section.name}
@@ -43,6 +45,7 @@ const Home = () => {
               ))}
           </div>
         </div>
+
       </main>
     </div>
   );

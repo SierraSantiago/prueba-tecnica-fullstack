@@ -18,13 +18,14 @@ export const Sidebar = ({ role }: SidebarProps) => {
   ];
 
   return (
+    
     <aside className="w-60 bg-gray-800 text-white shadow-md p-4 flex flex-col justify-center gap-7 h-screen">
       <Image
         src={logo}
         alt="Sidebar Logo"
         width={96}
         height={96}
-        className="mx-auto mb-6 w-24 h-24 object-contain rounded"
+        className="mx-auto mb-44 w-24 h-24 object-contain rounded "
       />
       {sections
         .filter((s) => s.roles.includes(role))
