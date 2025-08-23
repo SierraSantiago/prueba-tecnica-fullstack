@@ -1,6 +1,6 @@
-import { Button } from "@/components/ui/button";
-import { useRouter } from "next/router";
-import { authClient } from "@/lib/auth/client";
+import { Button } from '@/components/ui/button';
+import { useRouter } from 'next/router';
+import { authClient } from '@/lib/auth/client';
 
 export const SignOutButton = () => {
   const router = useRouter();
@@ -9,14 +9,18 @@ export const SignOutButton = () => {
     await authClient.signOut({
       fetchOptions: {
         onSuccess: () => {
-          router.push("/auth/login");
+          router.push('/auth/login');
         },
       },
     });
   };
 
   return (
-    <Button className = 'text-black hover:bg-slate-400'variant="outline" onClick={handleSignOut}>
+    <Button
+      className='text-black hover:bg-slate-400'
+      variant='outline'
+      onClick={handleSignOut}
+    >
       Cerrar sesión
     </Button>
   );

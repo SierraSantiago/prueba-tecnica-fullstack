@@ -1,10 +1,10 @@
-import { useEffect, useState } from "react";
-import { authClient } from "@/lib/auth/client";
+import { useEffect, useState } from 'react';
+import { authClient } from '@/lib/auth/client';
 
-type Role = "ADMIN" | "USER";
+type Role = 'ADMIN' | 'USER';
 
 export const useUserRole = () => {
-  const [role, setRole] = useState<Role>("USER");
+  const [role, setRole] = useState<Role>('USER');
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ export const useUserRole = () => {
         if (session.data?.user) {
           const res = await fetch(`/api/users/${session.data.user.id}`);
           if (!res.ok) {
-            console.error("Error al obtener el usuario:", await res.text());
+            console.error('Error al obtener el usuario:', await res.text());
             return;
           }
 
@@ -25,7 +25,7 @@ export const useUserRole = () => {
           }
         }
       } catch (err) {
-        console.error("Error obteniendo la sesión o rol del usuario:", err);
+        console.error('Error obteniendo la sesión o rol del usuario:', err);
       } finally {
         setLoading(false);
       }

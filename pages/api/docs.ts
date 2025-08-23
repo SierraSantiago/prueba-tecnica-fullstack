@@ -1,6 +1,5 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { swaggerSpec } from "@/lib/utils/swagger";
-import swaggerUi from "swagger-ui-express";
+import { NextApiRequest, NextApiResponse } from 'next';
+import { swaggerSpec } from '@/lib/utils/swagger';
 
 export const config = {
   api: {
@@ -9,8 +8,8 @@ export const config = {
 };
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {
-  if (req.method === "GET") {
-    res.setHeader("Content-Type", "text/html");
+  if (req.method === 'GET') {
+    res.setHeader('Content-Type', 'text/html');
     res.send(`
       <!DOCTYPE html>
       <html lang="en">
@@ -37,6 +36,6 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       </html>
     `);
   } else {
-    res.status(405).json({ message: "Method not allowed" });
+    res.status(405).json({ message: 'Method not allowed' });
   }
 }

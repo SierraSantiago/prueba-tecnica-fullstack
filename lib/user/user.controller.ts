@@ -1,5 +1,5 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { UserService } from "./user.service";
+import { NextApiRequest, NextApiResponse } from 'next';
+import { UserService } from './user.service';
 
 /**
  * @swagger
@@ -30,19 +30,22 @@ export const getUsers = async (req: NextApiRequest, res: NextApiResponse) => {
  *       404:
  *         description: Usuario no encontrado
  */
-export const getUserById = async (req: NextApiRequest, res: NextApiResponse) => {
+export const getUserById = async (
+  req: NextApiRequest,
+  res: NextApiResponse
+) => {
   try {
     const { id } = req.query;
     const user = await UserService.getUserById(id as string);
 
     if (!user) {
-      return res.status(404).json({ message: "Usuario no encontrado" });
+      return res.status(404).json({ message: 'Usuario no encontrado' });
     }
 
     return res.status(200).json(user);
   } catch (error) {
-    console.error("Error al obtener usuario:", error);
-    return res.status(500).json({ message: "Error interno del servidor" });
+    console.error('Error al obtener usuario:', error);
+    return res.status(500).json({ message: 'Error interno del servidor' });
   }
 };
 

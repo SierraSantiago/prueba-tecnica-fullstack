@@ -1,9 +1,9 @@
-import { useEffect, useState } from "react";
-import { useRequireAuth } from "@/hooks/useRequireAuth";
-import { useUserRole } from "@/hooks/useUserRole";
-import { Sidebar } from "@/components/ui/Sidebar";
-import { Button } from "@/components/ui/button";
-import { CSVLink } from "react-csv";
+import { useEffect, useState } from 'react';
+import { useRequireAuth } from '@/hooks/useRequireAuth';
+import { useUserRole } from '@/hooks/useUserRole';
+import { Sidebar } from '@/components/ui/Sidebar';
+import { Button } from '@/components/ui/button';
+import { CSVLink } from 'react-csv';
 import {
   LineChart,
   Line,
@@ -12,7 +12,7 @@ import {
   CartesianGrid,
   Tooltip,
   ResponsiveContainer,
-} from "recharts";
+} from 'recharts';
 
 interface Movement {
   id: number;
@@ -32,16 +32,18 @@ const ReportsPage = () => {
   useEffect(() => {
     const fetchMovements = async () => {
       try {
-        const res = await fetch("/api/movements");
+        const res = await fetch('/api/movements');
         const data: Movement[] = await res.json();
-        data.sort((a, b) => new Date(a.date).getTime() - new Date(b.date).getTime());
+        data.sort(
+          (a, b) => new Date(a.date).getTime() - new Date(b.date).getTime()
+        );
         setMovements(data);
 
         // Calcular saldo
         const total = data.reduce((acc, m) => acc + m.amount, 0);
         setBalance(total);
       } catch (err) {
-        console.error("Error fetching movements:", err);
+        console.error('Error fetching movements:', err);
       } finally {
         setLoadingData(false);
       }
@@ -50,13 +52,14 @@ const ReportsPage = () => {
     fetchMovements();
   }, []);
 
-  if (loading || loadingData) return <div className="text-white">Cargando...</div>;
-  if (role !== "ADMIN")
+  if (loading || loadingData)
+    return <div className='text-white'>Cargando...</div>;
+  if (role !== 'ADMIN')
     return (
-      <div className="flex h-screen bg-gray-600 text-white">
+      <div className='flex h-screen bg-gray-600 text-white'>
         <Sidebar role={role} />
-        <main className="flex-1 p-8">
-          <h1 className="text-xl">No tienes permisos para ver esta página</h1>
+        <main className='flex-1 p-8'>
+          <h1 className='text-xl'>No tienes permisos para ver esta página</h1>
         </main>
       </div>
     );
@@ -69,37 +72,43 @@ const ReportsPage = () => {
   }));
 
   return (
-    <div className="flex h-screen bg-gray-600 text-white">
+    <div className='flex h-screen bg-gray-600 text-white'>
       <Sidebar role={role} />
-      <main className="flex-1 p-8 overflow-y-auto">
-        <h1 className="text-2xl font-bold mb-6">Reportes Financieros</h1>
+      <main className='flex-1 p-8 overflow-y-auto'>
+        <h1 className='text-2xl font-bold mb-6'>Reportes Financieros</h1>
 
-        <div className="mb-6">
-          <h2 className="text-xl font-semibold mb-2">Saldo: ${balance.toFixed(2)}</h2>
+        <div className='mb-6'>
+          <h2 className='text-xl font-semibold mb-2'>
+            Saldo: ${balance.toFixed(2)}
+          </h2>
         </div>
 
-        <div className="mb-6 w-full h-64 border-black text-white">
+        <div className='mb-6 w-full h-64 border-black text-white'>
           <ResponsiveContainer>
-            <LineChart data={movements.map((m) => ({ date: m.date, amount: m.amount }))}>
-              <CartesianGrid strokeDasharray="3 3" stroke="#000000" />
+            <LineChart
+              data={movements.map((m) => ({ date: m.date, amount: m.amount }))}
+            >
+              <CartesianGrid strokeDasharray='3 3' stroke='#000000' />
               <XAxis
-                dataKey="date"
-                stroke="#000000"
+                dataKey='date'
+                stroke='#000000'
                 tickFormatter={(date) => new Date(date).toLocaleDateString()}
               />
-              <YAxis stroke="#000000" />
+              <YAxis stroke='#000000' />
               <Tooltip
-                labelFormatter={(date) => new Date(date).toLocaleDateString()} 
-                formatter={(value: number) => [`$${value.toFixed(2)}`, "Monto"]} 
+                labelFormatter={(date) => new Date(date).toLocaleDateString()}
+                formatter={(value: number) => [`$${value.toFixed(2)}`, 'Monto']}
               />
 
-              <Line type="monotone" dataKey="amount" stroke="#000000" />
+              <Line type='monotone' dataKey='amount' stroke='#000000' />
             </LineChart>
           </ResponsiveContainer>
         </div>
 
-        <CSVLink data={csvData} filename={"movimientos.csv"}>
-          <Button className="bg-green-600 hover:bg-green-700">Descargar CSV</Button>
+        <CSVLink data={csvData} filename={'movimientos.csv'}>
+          <Button className='bg-green-600 hover:bg-green-700'>
+            Descargar CSV
+          </Button>
         </CSVLink>
       </main>
     </div>

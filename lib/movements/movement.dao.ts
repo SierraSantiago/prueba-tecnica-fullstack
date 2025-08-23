@@ -1,5 +1,5 @@
-import { prisma } from "../prisma/prisma";
-import { CreateMovementDTO } from "./movement.dto";
+import { prisma } from '../prisma/prisma';
+import { CreateMovementDTO } from './movement.dto';
 
 export const MovementDao = {
   findAll: () =>
@@ -16,7 +16,7 @@ export const MovementDao = {
           },
         },
       },
-      orderBy: { date: "desc" },
+      orderBy: { date: 'desc' },
     }),
 
   create: (data: CreateMovementDTO) =>

@@ -1,5 +1,5 @@
-import { MovementDao } from "./movement.dao";
-import { CreateMovementDTO, MovementDTO } from "./movement.dto";
+import { MovementDao } from './movement.dao';
+import { CreateMovementDTO, MovementDTO } from './movement.dto';
 
 export const MovementService = {
   getAllMovements: async (): Promise<MovementDTO[]> => {

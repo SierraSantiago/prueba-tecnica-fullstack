@@ -1,4 +1,4 @@
-import { prisma } from "../prisma/prisma";
+import { prisma } from '../prisma/prisma';
 
 export const UserDao = {
   findAll: () =>
@@ -22,7 +22,10 @@ export const UserDao = {
       },
     }),
 
-  update: (id: string, data: Partial<{ name: string; role: "ADMIN" | "USER" }>) =>
+  update: (
+    id: string,
+    data: Partial<{ name: string; role: 'ADMIN' | 'USER' }>
+  ) =>
     prisma.user.update({
       where: { id },
       data,

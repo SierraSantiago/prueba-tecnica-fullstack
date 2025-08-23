@@ -1,5 +1,5 @@
-import { NextApiRequest, NextApiResponse } from "next";
-import { MovementService } from "./movement.service";
+import { NextApiRequest, NextApiResponse } from 'next';
+import { MovementService } from './movement.service';
 
 /**
  * @swagger
@@ -10,7 +10,10 @@ import { MovementService } from "./movement.service";
  *       200:
  *         description: Lista de movimientos
  */
-export const getMovements = async (req: NextApiRequest, res: NextApiResponse) => {
+export const getMovements = async (
+  req: NextApiRequest,
+  res: NextApiResponse
+) => {
   const movements = await MovementService.getAllMovements();
   res.status(200).json(movements);
 };
@@ -40,7 +43,10 @@ export const getMovements = async (req: NextApiRequest, res: NextApiResponse) =>
  *       201:
  *         description: Movimiento creado
  */
-export const createMovement = async (req: NextApiRequest, res: NextApiResponse) => {
+export const createMovement = async (
+  req: NextApiRequest,
+  res: NextApiResponse
+) => {
   const dto = req.body;
   const movement = await MovementService.createMovement(dto);
   res.status(201).json(movement);

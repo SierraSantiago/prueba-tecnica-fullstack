@@ -1,5 +1,5 @@
-import { UserDao } from "./user.dao";
-import { UpdateUserDTO, UserDTO } from "./user.dto";
+import { UserDao } from './user.dao';
+import { UpdateUserDTO, UserDTO } from './user.dto';
 
 export const UserService = {
   getAllUsers: async (): Promise<UserDTO[]> => {

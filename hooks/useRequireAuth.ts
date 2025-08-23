@@ -1,8 +1,8 @@
-import { useEffect } from "react";
-import { useRouter } from "next/router";
-import { authClient } from "../lib/auth/client";
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { authClient } from '../lib/auth/client';
 
-export const useRequireAuth = (redirectTo: string = "/auth/login") => {
+export const useRequireAuth = (redirectTo: string = '/auth/login') => {
   const router = useRouter();
 
   // Si el usuario no está autenticado, redirigir a la ruta especificada
@@ -10,7 +10,7 @@ export const useRequireAuth = (redirectTo: string = "/auth/login") => {
     const checkSession = async () => {
       const session = await authClient.getSession();
       if (!session.data?.user) {
-        router.replace(redirectTo); 
+        router.replace(redirectTo);
       }
     };
     checkSession();
