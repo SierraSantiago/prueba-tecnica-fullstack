@@ -12,6 +12,7 @@ export const auth = betterAuth({
       clientSecret: process.env.GITHUB_CLIENT_SECRET as string,
     },
   },
+  secret: process.env.BETTER_AUTH_SECRET
 });
 
 export type Session = typeof auth.$Infer.Session;
